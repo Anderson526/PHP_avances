@@ -1,7 +1,7 @@
 <?php
 
 
-function clear(){   //funcion para limpiar la pantalla
+function clear(){   //funcion para limpiar la pantalla en win y linux
     if(PHP_OS == "WINT"){
         system("csl");
     }else{
@@ -11,7 +11,7 @@ function clear(){   //funcion para limpiar la pantalla
 
 $palabras_juego=["palabra", "cosas", "usb", "extraño","palabra","buenas","okay"];
 
-define("MAX_ATTEPS",6);
+define("MAX_ATTEPS",6); //constante de numero de intentos
 
 echo "///////////////////////Juego del ahorcado///////////////////";
 echo "\n";
@@ -21,15 +21,15 @@ echo "\n";
 //inicializacion del juego
 
 
-$select_palabra = $palabras_juego[rand(0,7)];
+$select_palabra = $palabras_juego[rand(0,7)]; //selecciona una palabra en modo aleatoreo del arreglo
 
-$select_palabra=strtolower($select_palabra);
+$select_palabra=strtolower($select_palabra); //modifica la letra y la convierte a minuscula
 $tamaño_palabra = strlen($select_palabra);
 $discovered_letters = str_pad("",$tamaño_palabra,"_");
  $attemps =0;
 
 
-function print_man() {
+function print_man() {  //funcion para imprimir al muñequito dependiendo de los casos del numero de intento
 
     global $attemps;
     
@@ -149,7 +149,7 @@ if(str_contains($select_palabra,$player_letter)){ // esta funcion se utiliza par
 
     $offset=0;
 
-    while(($letter_position= strpos($select_palabra,$player_letter,$offset)) !==false){
+    while(($letter_position= strpos($select_palabra,$player_letter,$offset)) !==false){  //recorre el arreglo de las palabras identificando si estan las letras , si no cierra ciclo
 
         $discovered_letters[$letter_position]= $player_letter;
         $offset= $letter_position+1;
@@ -165,11 +165,11 @@ else{
 
     clear();
     $attemps++;
-    echo "Letra incorrecta, te quedan " . (MAX_ATTEPS - $attemps) . " intentos";
+    echo "Letra incorrecta, te quedan " . (MAX_ATTEPS - $attemps) . " intentos";  //controla el numero de intentos del jugador
 
    print_man();
 
-    sleep(1); //pausar ejecucion 
+    sleep(1); //pausar ejecucion en segundos
 }
 
 clear();
