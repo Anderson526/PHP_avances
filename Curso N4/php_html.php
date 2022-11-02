@@ -1,6 +1,8 @@
 
 <?php
+$conditional=true;
 $input= "Ingrese el input: <input type='text' placeholder='conceptos php'>";
+$arreglin=array("pedro","lucas","sofia","horacio");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,7 +14,22 @@ $input= "Ingrese el input: <input type='text' placeholder='conceptos php'>";
 </head>
 <body>
     
-<?= $input ?>
+ <?= $input ?><!--manera simplificada de llamar o escribir php  -->
+
+<?php if($conditional==true):?>
+    <p>Es true</p>
+<?php else:?>
+    <p>Es false</p>
+<?php endif ?>
+
+<!-- ciclos html y php ; recursividad -->
+<ul>
+<?php for($i=0; $i<count($arreglin);$i++): ?>
+
+  <?="<li>$arreglin[$i]</li>"?>
+
+  <?php endfor; ?>
+</ul>
 
 
 </body>
